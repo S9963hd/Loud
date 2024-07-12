@@ -29,6 +29,9 @@ async function notify(status){
     else if(status==401){
         toast.warning("Invalid Email and Password");
     }
+    else if(status==301){
+        toast.warning("Please Wait.......");
+    }
     else{
         toast.error("Server Error");
     }
@@ -49,6 +52,7 @@ async function notify(status){
             url:"https://loudbackendlogin.onrender.com/login",
             data:{email:email,password:password}
         }).then(res=>{setLogin(res.data);console.log(res.data);fetchFavourites(res.data);}).catch(err=>{(err.response==undefined)?notify(505):notify(err.response.status)});
+        notify(301);
     }
     async function forgotPassword(){
         await axios({
