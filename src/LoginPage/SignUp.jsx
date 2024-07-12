@@ -13,7 +13,7 @@ const SignUp = () => {
     // tostify-Notify
 async function notify(status){
     
-    if(status==200){
+    if(status==200 || status==201){
         setTimeout(function() {
             toast.success("Sign Up in Successfully");
         }, 100);
