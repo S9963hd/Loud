@@ -150,7 +150,7 @@ body{
         border:2px solid transparent;
     }
     .button:hover{
-        width:80px;
+        width:100px;
         height:6vh;
         cursor:pointer;
         color:#DC3F55;
