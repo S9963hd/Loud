@@ -41,6 +41,7 @@ async function notify(status){
             url:"https://loudbackendfavourites.onrender.com/getfavourites",
             data:data
         }).then(res=>{setFavourites(res.data);console.log(res.data);notify(200)}).catch(err=>{(err.response!=undefined)?notify(505):notify(err.response.status)});
+                setLoader(false);
     } 
     async function loggingIn(){
         await axios({
@@ -48,7 +49,6 @@ async function notify(status){
             url:"https://loudbackendlogin.onrender.com/login",
             data:{email:email,password:password}
         }).then(res=>{setLogin(res.data);console.log(res.data);fetchFavourites(res.data);}).catch(err=>{(err.response==undefined)?notify(505):notify(err.response.status)});
-        setLoader(false);
     }
     async function forgotPassword(){
         await axios({
