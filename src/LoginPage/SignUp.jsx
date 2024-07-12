@@ -8,6 +8,7 @@ const SignUp = () => {
     const[showPassword,setShowPassword]=useState(true);
     const[email,setEmail]=useState('');
     const[password,setPassword]=useState('');
+     const[loader,setLoader]=useState(false);
     const navigate=useNavigate();
     // tostify-Notify
 async function notify(status){
