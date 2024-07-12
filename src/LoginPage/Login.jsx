@@ -30,7 +30,7 @@ async function notify(status){
         toast.warning("Invalid Email and Password");
     }
     else if(status==301){
-        toast.warning("Please Wait.......");
+        toast.warning("Please Wait.......",{autoClose:false});
     }
     else{
         toast.error("Server Error");
