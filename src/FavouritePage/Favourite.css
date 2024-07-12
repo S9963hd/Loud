@@ -1,0 +1,8 @@
+.favContent{
+    display:flexbox;
+    justify-content: center;
+}
+.favTitle{
+    color:white;
+    text-align: center;
+}

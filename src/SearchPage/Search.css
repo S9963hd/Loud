@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'integral cf';
+    src: url("../../public/Fontspring-DEMO-integralcf-regular.otf");
+}
+@font-face {
+    font-family: 'gilory';
+    src: url("../../public/CenturyGothicPaneuropeanRegular.ttf");
+}
+.searching{
+    min-width:50%;
+    outline:none;
+    height:30px;
+    padding-left:10px;
+    border:2px solid #DC3F55;
+    border-radius:25px;
+}   
+body{
+    background-color:#DC3F55;
+}
+.card{
+    font-family: 'gilory';
+    display: flex;
+    flex-wrap: wrap;
+    background-color:white;
+    align-items: center;
+    padding:25px;
+    padding-left:50px;
+    padding-right:50px;
+    margin:10px;
+    border-radius:5px;
+}
+.card img{
+    width:100px;
+    height:100px;
+    border: 1px solid white;
+    border-radius:7px;
+}
+.card .cardContent{
+    display:'flexbox';
+    margin-left:30px;
+    margin-right:30px;
+}
+.card i{
+    color:#DC3F55;
+    cursor:pointer;
+}
+.card i:hover{
+    color:#DC3F55;
+    cursor:pointer;
+}
+.searchButton{
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: larger;
+}
+.loading{
+    animation:1s spin infinite ;
+}
+@keyframes spin{
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+.hide{
+    display:none;
+}
+.loader{
+    animation:1s spin infinite ease-in-out;
+}
+@keyframes spin {
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+@media screen and (max-width:800px){
+    .card .cardContent{
+        display:'flexbox';
+        margin-left:30px;
+        margin-right:30px;
+        justify-content: center;
+    }
+    .card img{
+        width:100px;
+        height:100px;
+        margin-left:30px;
+        border: 1px solid white;
+        border-radius:7px;
+    }
+}

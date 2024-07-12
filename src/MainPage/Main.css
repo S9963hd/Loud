@@ -1,0 +1,191 @@
+@font-face {
+    font-family: 'centuary gothic';
+    src: url("../../public/Fontspring-DEMO-integralcf-regular.otf");
+}
+.logo{
+    width:120px;
+    height:40px;
+}
+body{
+    margin-bottom:100px;
+}
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    padding:1vw;
+    padding-left:3vw;
+    padding-right:3vw;
+    background-color: white;
+    border-bottom: 1px solid #DC3F55;
+}
+.button{
+    width:150px;
+    height:6vh;
+    cursor:pointer;
+    color:#DC3F55;
+    font-family:'centuary gothic';
+    font-size:large;
+    background-color: transparent;
+    border:2px solid transparent;
+}
+.button:hover{
+    width:150px;
+    height:6vh;
+    cursor:pointer;
+    color:#DC3F55;
+    font-family:'centuary gothic';
+    font-size:large;
+    border-bottom: 2px solid #DC3F55;
+}
+.navigation1{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.navigation *{
+    margin-left:10px;
+    margin-right:10px;
+    color:#DC3F55;
+    font-size: larger;
+}
+.icon{
+    cursor:pointer;
+}
+.sideBar{
+    z-index:2;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin:10px;
+    padding:10px;
+    width:300px;
+    height:70vh;
+    background-color:white;
+    border-radius:10px;
+    border:2px solid #DC3F55;
+    color:#DC3F55;
+}
+.sideBar > h2{
+    cursor:pointer;
+}
+.sideBarHide{
+    display: none;
+}
+.carousel{
+    margin:40px;
+    width:30vw;
+    height:10vh;
+    object-fit: fill;
+    opacity: 0.5;
+    background-color: aliceblue;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius:10px;
+    box-shadow:0px 0px white;
+}
+
+.AudioSection{
+    display:flex;
+    width:100vw;
+}
+.AudioSection .AudioPlayer{
+    flex-grow: 9;
+}
+.AudioSection img{
+    flex-grow:1;
+    width:80px;
+    height: 90px;
+    align-self: center; 
+    background-color: aliceblue;
+}
+
+/* React H5 Audio Player */
+.rhap_progress-filled,
+.rhap_progress-indicator {
+  background-color: #ff5555 !important;
+}
+.rhap_main-controls-button svg {
+    color: #ff5555;
+    width: 100%;
+    height: 100%;
+  }
+  .rhap_button-clear.rhap_volume-button {
+    color: #ff5555 !important;
+  }
+
+  .rhap_volume-bar, .rhap_volume-indicator {
+    background-color: red;
+  }
+  .rhap_container {
+    background: rgba(255,255,255,0.8);
+  }
+  .Model{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.5);
+  } 
+  .Model div{
+    padding:30px;
+    background-color: white;
+    border-radius:20px;
+    color:#DC3F55;
+  }
+  @media screen and (max-width:600px){
+    .logo{
+        width:90px;
+        height:30px;
+    }
+    .button{
+        width:100px;
+        height:6vh;
+        cursor:pointer;
+        color:#DC3F55;
+        font-family:'centuary gothic';
+        font-size:large;
+        background-color: transparent;
+        border:2px solid transparent;
+    }
+    .button:hover{
+        width:80px;
+        height:6vh;
+        cursor:pointer;
+        color:#DC3F55;
+        font-family:'centuary gothic';
+        font-size:large;
+        border-bottom: 2px solid #DC3F55;
+    }
+    .AudioPlayer{
+        font-size: xx-large
+    }
+    .rhap_main-controls-button svg {
+        color: #ff5555;
+        width: 80%;
+        height: 80%;
+      }
+    .AudioSection img{
+        width:8vh;
+    }
+    .sideBar{
+        z-index:2;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        margin:10px;
+        padding:10px;
+        width:60vw;
+        height:75vh;
+        background-color:white;
+        border-radius:10px;
+        border:2px solid #DC3F55;
+        color:#DC3F55;
+    }
+  }
+  @media screen and (max-width:450px){
+    .rhap_volume-bar, .rhap_volume-indicator {
+        display: none;
+      }
+  }

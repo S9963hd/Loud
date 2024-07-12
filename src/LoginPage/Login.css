@@ -1,0 +1,18 @@
+.LoginPage{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.LoginContent{
+    padding:30px;
+    border-radius:10px;
+    background-color:white !important;
+    color:#DC3F55;
+}
+.LoginContent input{
+    width:250px;
+    height:25px;
+    outline:none;
+}
