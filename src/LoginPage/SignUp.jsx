@@ -17,14 +17,16 @@ async function notify(status){
         setTimeout(function() {
             toast.success("Sign Up in Successfully");
         }, 100);
-        
+        setLoader(false);
         navigate('/login');
     }
     else if(status==403){
         toast.warning("Data Already present");
+        setLoader(false);
     }
     else{
         toast.error("Server Error/Timeout Please Try Again");
+        setLoader(false);
     }
 
 }
@@ -52,7 +54,7 @@ async function notify(status){
                 <p style={{cursor:'pointer'}}>forgot Password?</p>
             </div>
             <div>
-                <button type="submit" className="button">SignUp</button>
+                <button type="submit" className="button" onClick={()=>setLoader(true)}</button>>SignUp&nbsp;<i className={(loader)?"fa-solid fa-spinner loader":"hide"}></i></button>
             </div>
             <ToastContainer />
         </form>
