@@ -32,7 +32,6 @@ async function notify(status){
             method:"POST",
             url:"https://loudbackendlogin.onrender.com/signup",
             data:{email:email,password:password},
-            timeout:5000
         }).then(res=>{notify(res.status)}).catch(err=>{(err.response==undefined)?notify(505):notify(err.response.status)});
     }
   return (
