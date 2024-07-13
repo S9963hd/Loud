@@ -81,7 +81,7 @@ function Model(){
     <div  className="Model" style={{boxShadow:'0px 0px 5px #DC3F55'}}>
       <div >
           <h1>Login First</h1>
-          <button onClick={()=>navigate('/')} className="button">Ok</button>
+          <button onClick={()=>navigate('/')} className="button" style={{border:'1px solid #DC3F55'}}>Ok</button>
       </div>
     </div>
   )
