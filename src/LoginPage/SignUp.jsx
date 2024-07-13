@@ -54,7 +54,7 @@ async function notify(status){
                 <p style={{cursor:'pointer'}}>forgot Password?</p>
             </div>
             <div>
-                <button type="submit" className="button" onClick={()=>setLoader(true)}SignUp&nbsp;<i className={(loader)?"fa-solid fa-spinner loader":"hide"}></i></button>
+                <button type="submit" className="button" onClick={()=>setLoader(true)}>SignUp&nbsp;<i className={(loader)?"fa-solid fa-spinner loader":"hide"}></i></button>
             </div>
             <ToastContainer />
         </form>
