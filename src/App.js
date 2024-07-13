@@ -78,7 +78,7 @@ function App() {
 function Model(){
   const navigate=useNavigate()
   return(
-    <div  className="Model" style={{boxShadow:'0px 0px 5px red'}}>
+    <div  className="Model" style={{boxShadow:'0px 0px 5px #DC3F55'}}>
       <div >
           <h1>Login First</h1>
           <button onClick={()=>navigate('/')} className="button">Ok</button>
