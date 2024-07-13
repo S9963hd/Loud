@@ -25,15 +25,19 @@ async function notify(status){
     }
     else if(status==201){
         toast.success("Check your Email");
+        setLoader(false);
     }
     else if(status==401){
         toast.warning("Invalid Email and Password");
+        setLoader(false);
     }
     else if(status==301){
         toast.warning("Please Wait.......",{autoClose:false});
+        setLoader(false);
     }
     else{
         toast.error("Server Error");
+        setLoader(false);
     }
 
 }
@@ -51,8 +55,7 @@ async function notify(status){
             method:"POST",
             url:"https://loudbackendlogin.onrender.com/login",
             data:{email:email,password:password}
-        }).then(res=>{setLogin(res.data);console.log(res.data);fetchFavourites(res.data);}).catch(err=>{(err.response==undefined)?notify(505):notify(err.response.status)});
-        notify(301);
+        }).then(res=>{setLogin(res.data);console.log(res.data);if(res.status==200){fetchFavourites(res.data);notify(301)}}).catch(err=>{(err.response==undefined)?notify(505):notify(err.response.status)});
     }
     async function forgotPassword(){
         await axios({
