@@ -12,6 +12,7 @@ import Favourite from './FavouritePage/Favourite';
 // Login Page
 import Login from './LoginPage/Login';
 import SignUp from './LoginPage/SignUp';
+import {auth,getCookie} from './LoginPage/Login';
 // Song Context
 export const songContext = createContext();
 
@@ -20,7 +21,7 @@ function App() {
   const [songs, setSongs] = useState([]);
   const [index, setIndex] = useState(null);
   const [playStack, setPlayStack] = useState({});
-  const [login,setLogin]=useState(null);
+  const [login,setLogin]=useState(auth());
   const[favourites,setFavourites]=useState([]);
   const[songsFlag,setSongsFlag]=useState([]);
   // next Song
