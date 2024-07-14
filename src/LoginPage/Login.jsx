@@ -45,7 +45,12 @@ const Login = () => {
         } else if (status === 301) {
             toast.warning("Please Wait.......", { autoClose: false });
             setLoader(false);
-        } else {
+        }
+        else if(status==302){
+            toast.warning("Technical Error at frontend please try again");
+            setLoader(false);
+        }
+        else {
             toast.error("Server Error");
             setLoader(false);
         }
@@ -74,8 +79,7 @@ const Login = () => {
                 notify(301);
             }
             else{
-                 notify(301);
-                loggingIn();
+                 notify(302);
             }
         }).catch(err => { (err.response === undefined) ? notify(505) : notify(err.response.status) });
         console.log(Cookie.get('auth'));
