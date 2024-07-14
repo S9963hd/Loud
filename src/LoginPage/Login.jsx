@@ -82,6 +82,7 @@ const Login = () => {
             }
             else{
                  notify(302);
+                console.log(Cookie.get('auth'))
             }
         }).catch(err => { (err.response === undefined) ? notify(505) : notify(err.response.status) });
         console.log(Cookie.get('auth'));
