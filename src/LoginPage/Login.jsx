@@ -69,7 +69,7 @@ const Login = () => {
             timeout: 5000
         }).then(async res => {
             await setLogin(auth());
-            if (res.status === 200 ) {
+            if (res.status === 200 && login!=null) {
                 fetchFavourites(login);
                 notify(301);
             }
