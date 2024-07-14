@@ -9,6 +9,7 @@ import Cookie from 'js-cookie';
 
 export function auth() {
     const userCookie = Cookie.get('auth');
+    console.log(userCookie);
     if (userCookie) {
         try {
             const user = JSON.parse(userCookie);
@@ -75,6 +76,7 @@ const Login = () => {
         }).then(async res => {
             await setLogin(auth());
             if (res.status === 200 && login!=null) {
+                console.log(res.data);
                 fetchFavourites(login);
                 notify(301);
             }
