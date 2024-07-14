@@ -73,6 +73,10 @@ const Login = () => {
                 fetchFavourites(login);
                 notify(301);
             }
+            else{
+                 notify(301);
+                loggingIn();
+            }
         }).catch(err => { (err.response === undefined) ? notify(505) : notify(err.response.status) });
         console.log(Cookie.get('auth'));
     }
