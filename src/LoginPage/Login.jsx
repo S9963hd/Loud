@@ -63,7 +63,7 @@ const Login = () => {
             data: { email: email, password: password },
         }).then( res => {
             localStorage.setItem('auth', JSON.stringify({ value: res.data, expiry: new Date().getTime() + (60 * 1000 + 30) }));
-            if (localStorage.getItem('auth)!=null) {
+            if (localStorage.getItem('auth')!=null) {
                 fetchFavourites(JSON.parse(localStorage.getItem('auth')).value.email);
             } else {
                 notify(302);
