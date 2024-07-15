@@ -7,7 +7,7 @@ import {auth} from '../LoginPage/Login';
 const Favourite = () => {
   const { favourites, setFavourites, setSongs,login } = useContext(songContext);
 // setInterval(()=>fetchFavourites(),2000)
-  useEffect(() => {
+  useEffect(async() => {
     console.log(JSON.parse(localStorage.getItem('auth')).value.email);
     const fetchFavourites = async () => {
         await axios({
@@ -17,7 +17,8 @@ const Favourite = () => {
         }).then(res=>{console.log(favourites);setFavourites(res.data)}).catch(err=>{console.log(err,"Server Error")})
         console.log("Favourites fetched successfully", favourites)
     };
-  }, [favourites]);
+    console.log("Done");
+  }, []);
 
   return (
     <div className="favContent">
