@@ -8,12 +8,12 @@ const Favourite = () => {
   const { favourites, setFavourites, setSongs,login } = useContext(songContext);
 
   useEffect(() => {
-    console.log(typeof login);
+    console.log(login.email);
     const fetchFavourites = async () => {
         await axios({
           method:"POST",
           url:"https://loudbackendfavourites.onrender.com/getfavourites",
-          data:{email:login.email}
+          data:{email:auth().email}
         }).then(res=>setFavourites(res.data)).catch(err=>{console.log(err,"Server Error");setInterval(()=>fetchFavourites(),2000)})
         console.log("Favourites fetched successfully", favourites)
     };
