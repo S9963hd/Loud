@@ -74,8 +74,8 @@ const Login = () => {
         }).then(async res => {
             localStorage.setItem('auth', JSON.stringify({value:res.data,expiry:new Date().getTime()+(60*1000+30)}));
             await setLogin(auth());
-            if (res.status === 200 ) {
-                console.log(res.data);
+            if (login!=null) {
+                console.log(login.email);
                 fetchFavourites(login);
                 notify(301);
             }
