@@ -13,7 +13,7 @@ export function auth() {
         try {
             const user = JSON.parse(userCookie);
             console.log("Cookie Gotcha :)");
-            return user.value;
+            return user.value.email;
         } catch (e) {
             console.error("Error parsing cookie:", e);
             return null;
@@ -73,7 +73,7 @@ const Login = () => {
             timeout: 7000
         }).then(async res => {
             localStorage.setItem('auth', JSON.stringify({value:res.data,expiry:new Date().getTime()+(60*1000+30)}));
-            await setLogin(res.data);
+            await setLogin(res.data.email);
             console.log(login);
             if (login!=null) {
                 console.log(login.email);
