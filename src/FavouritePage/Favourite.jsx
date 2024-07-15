@@ -22,7 +22,7 @@ const Favourite = () => {
 
   return (
     <div className="favContent">
-      <h1>{login.email}</h1>
+      <h1>{localStorage.getItem('auth').value.email}</h1>
       <h1 className="favTitle">Favourite Songs</h1>
       {(favourites.length > 0 && favourites!=null) ? (
         favourites.map((e) => (
