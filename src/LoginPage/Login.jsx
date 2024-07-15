@@ -60,7 +60,7 @@ const Login = () => {
         await axios({
             method: "POST",
             url: "https://loudbackendfavourites.onrender.com/getfavourites",
-            data: data
+            data: {email:data}
         }).then(res => { setFavourites(res.data); console.log(res.data); notify(200) }).catch(err => { (err.response != undefined) ? notify(505) : notify(err.response.status) });
         setLoader(false);
     }
