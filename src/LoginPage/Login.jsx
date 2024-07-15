@@ -71,18 +71,13 @@ const Login = () => {
             url: "https://loudbackendlogin.onrender.com/login",
             data: { email: email, password: password },
             timeout: 7000
-        }).then(async res => {
+        }).then( res => {
             localStorage.setItem('auth', JSON.stringify({value:res.data,expiry:new Date().getTime()+(60*1000+30)}));
-            await setLogin(res.data.email);
+            setLogin(res.data.email);
             console.log(login);
-            if (login!=null) {
                 console.log(login.email);
                 fetchFavourites(login.email);
-                notify(301);
-            }
-            else{
                  notify(302);
-            }
         }).catch(err => { (err.response === undefined) ? notify(505) : notify(err.response.status) });
     }
 
