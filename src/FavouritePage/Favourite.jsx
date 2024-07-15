@@ -14,7 +14,7 @@ const Favourite = () => {
           url:"https://loudbackendfavourites.onrender.com/getfavourites",
           data:login
         }).then(res=>setFavourites(res.data)).catch(err=>{console.log("Server Error");fetchFavourites()})
-        console.log("Favourites fetched successfully", res.data)
+        console.log("Favourites fetched successfully", favourites)
     };
   }, [setFavourites]);
 
