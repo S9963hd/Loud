@@ -5,7 +5,7 @@ import axios from 'axios';
 import { songContext } from '../App';
 import {auth} from '../LoginPage/Login';
 const Favourite = () => {
-  const { favourites, setFavourites, setSongs,login } = useContext(songContext);
+  const { favourites, setFavourites, setSongs } = useContext(songContext);
 // setInterval(()=>fetchFavourites(),2000)
   useEffect(async() => {
     console.log(JSON.parse(localStorage.getItem('auth')).value.email);
