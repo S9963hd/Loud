@@ -17,7 +17,7 @@ const Favourite = () => {
         }).then(res=>{console.log(favourites);setFavourites(res.data)}).catch(err=>{console.log(err,"Server Error")})
         console.log("Favourites fetched successfully", favourites)
     };
-    console.log("Done");
+    console.log("Done",favourites);
   }, []);
 
   return (
