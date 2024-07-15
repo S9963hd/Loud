@@ -9,15 +9,12 @@ const Favourite = () => {
 
   useEffect(() => {
     const fetchFavourites = async () => {
-      try {
-        const response = await axios.post(
-          "https://loudbackendfavourites.onrender.com/getfavourites",login
-        );
-        setFavourites(response.data);
-        console.log("Favourites fetched successfully", response.data);
-      } catch (err) {
-        console.error(err.response ? err.response.data : "Server Error");
-      }
+        await axios({
+          method:"POST",
+          url:"https://loudbackendfavourites.onrender.com/getfavourites",
+          data:login
+        }).then(res=>setFavourites(res.data)).catch(err=>console.log("Server Error"))
+        console.log("Favourites fetched successfully", response.data)
     };
 
     fetchFavourites();
