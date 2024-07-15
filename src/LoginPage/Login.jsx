@@ -12,8 +12,8 @@ export async function auth() {
     if (userCookie) {
         try {
             const user = JSON.parse(userCookie);
-            console.log("Cookie Gotcha :)");
-            return user.value.email;
+            console.log("Cookie Gotcha :)",user);
+            return user.value;
         } catch (e) {
             console.error("Error parsing cookie:", e);
             return null;
@@ -77,7 +77,7 @@ const Login = () => {
             console.log(login);
             if (login!=null) {
                 console.log(login.email);
-                fetchFavourites(login);
+                fetchFavourites(login.email);
                 notify(301);
             }
             else{
