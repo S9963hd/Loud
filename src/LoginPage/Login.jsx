@@ -13,7 +13,7 @@ export function auth() {
         try {
             const user = JSON.parse(userCookie);
             console.log("Cookie Gotcha :)");
-            return user.email.value;
+            return user.value;
         } catch (e) {
             console.error("Error parsing cookie:", e);
             return null;
