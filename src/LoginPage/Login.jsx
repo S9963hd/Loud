@@ -5,25 +5,25 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Login.css';
 import axios from 'axios';
 import { songContext } from '../App';
-import Cookie from 'js-cookie';
+// import Cookie from 'js-cookie';
 
-export function auth() {
-    const userCookie = Cookie.get('auth');
-    console.log(userCookie);
-    if (userCookie) {
-        try {
-            const user = JSON.parse(userCookie);
-            console.log("Cookie Gotcha :)");
-            return user;
-        } catch (e) {
-            console.error("Error parsing cookie:", e);
-            return null;
-        }
-    } else {
-        console.log('No user cookie found');
-        return null;
-    }
-}
+// export function auth() {
+//     const userCookie = Cookie.get('auth');
+//     console.log(userCookie);
+//     if (userCookie) {
+//         try {
+//             const user = JSON.parse(userCookie);
+//             console.log("Cookie Gotcha :)");
+//             return user;
+//         } catch (e) {
+//             console.error("Error parsing cookie:", e);
+//             return null;
+//         }
+//     } else {
+//         console.log('No user cookie found');
+//         return null;
+//     }
+// }
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(true);
@@ -71,10 +71,10 @@ const Login = () => {
             method: "POST",
             url: "https://loudbackendlogin.onrender.com/login",
             data: { email: email, password: password },
-            withCredentials: true,
             timeout: 5000
         }).then(async res => {
-            await setLogin(auth());
+            localStorage.setItem('auth', JSON.stringify(res.data));
+            await setLogin(JSON.parse(localStorage.getItem('myObject')));
             if (res.status === 200 && login!=null) {
                 console.log(res.data);
                 fetchFavourites(login);
