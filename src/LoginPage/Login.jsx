@@ -73,7 +73,7 @@ const Login = () => {
             timeout: 7000
         }).then( res => {
             localStorage.setItem('auth', JSON.stringify({value:res.data,expiry:new Date().getTime()+(60*1000+30)}));
-            setLogin(res.data);
+            setLogin(auth());
             console.log(login);
                 console.log(login.email);
                 fetchFavourites(login.email);
