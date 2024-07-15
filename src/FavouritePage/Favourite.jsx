@@ -8,7 +8,7 @@ const Favourite = () => {
   const { favourites, setFavourites, setSongs,login } = useContext(songContext);
 
   useEffect(() => {
-    console.log(login);
+    console.log(login.email);
     const fetchFavourites = async () => {
         await axios({
           method:"POST",
