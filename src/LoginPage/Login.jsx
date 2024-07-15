@@ -7,23 +7,22 @@ import axios from 'axios';
 import { songContext } from '../App';
 // import Cookie from 'js-cookie';
 
-// export function auth() {
-//     const userCookie = Cookie.get('auth');
-//     console.log(userCookie);
-//     if (userCookie) {
-//         try {
-//             const user = JSON.parse(userCookie);
-//             console.log("Cookie Gotcha :)");
-//             return user;
-//         } catch (e) {
-//             console.error("Error parsing cookie:", e);
-//             return null;
-//         }
-//     } else {
-//         console.log('No user cookie found');
-//         return null;
-//     }
-// }
+export function auth() {
+    const userCookie = localStorage.getItem('auth');
+    if (userCookie) {
+        try {
+            const user = JSON.parse(userCookie);
+            console.log("Cookie Gotcha :)");
+            return user;
+        } catch (e) {
+            console.error("Error parsing cookie:", e);
+            return null;
+        }
+    } else {
+        console.log('No user cookie found');
+        return null;
+    }
+}
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(true);
@@ -73,7 +72,7 @@ const Login = () => {
             data: { email: email, password: password },
             timeout: 5000
         }).then(async res => {
-            localStorage.setItem('auth', JSON.stringify(res.data));
+            localStorage.setItem('auth', JSON.stringify({value:res.data,expiry:new Date().getTime()+(60*1000+30));
             await setLogin(JSON.parse(localStorage.getItem('myObject')));
             if (res.status === 200 && login!=null) {
                 console.log(res.data);
