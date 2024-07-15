@@ -73,7 +73,7 @@ const Login = () => {
             timeout: 7000
         }).then(async res => {
             localStorage.setItem('auth', JSON.stringify({value:res.data,expiry:new Date().getTime()+(60*1000+30)}));
-            await setLogin(auth());
+            await setLogin(res.data);
             console.log(login);
             if (login!=null) {
                 console.log(login.email);
