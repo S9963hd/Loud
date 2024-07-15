@@ -13,7 +13,7 @@ const Favourite = () => {
         await axios({
           method:"POST",
           url:"https://loudbackendfavourites.onrender.com/getfavourites",
-          data:{email:login.email}
+          data:{email:auth().email}
         }).then(res=>setFavourites(res.data)).catch(err=>{console.log(err,"Server Error");setInterval(()=>fetchFavourites(),2000)})
         console.log("Favourites fetched successfully", favourites)
     };
