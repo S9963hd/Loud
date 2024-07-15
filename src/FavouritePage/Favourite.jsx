@@ -22,7 +22,7 @@ const Favourite = () => {
     <div className="favContent">
       <h1>{login}</h1>
       <h1 className="favTitle">Favourite Songs</h1>
-      {favourites.length > 0 ? (
+      {(favourites.length > 0 && favourites!=null) ? (
         favourites.map((e) => (
           <span key={e._id} onClick={() => setSongs(favourites)}>
             <Card song={e} />
