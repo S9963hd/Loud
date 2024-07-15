@@ -7,7 +7,7 @@ import axios from 'axios';
 import { songContext } from '../App';
 // import Cookie from 'js-cookie';
 
-export function auth() {
+export async function auth() {
     const userCookie = localStorage.getItem('auth');
     if (userCookie) {
         try {
