@@ -5,8 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Login.css';
 import axios from 'axios';
 import { songContext } from '../App';
-
-
 const Login = () => {
     const [showPassword, setShowPassword] = useState(true);
     const [email, setEmail] = useState('');
