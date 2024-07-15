@@ -54,7 +54,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/favourite" element={(login)?<Favourite />:<Model />}/>
+          <Route path="/favourite" element={(localStorage.getItem('auth'))?<Favourite />:<Model />}/>
         </Routes>
       </songContext.Provider>
       {songs.length > 0 && (
