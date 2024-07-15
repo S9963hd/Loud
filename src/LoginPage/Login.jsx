@@ -70,9 +70,9 @@ const Login = () => {
             method: "POST",
             url: "https://loudbackendlogin.onrender.com/login",
             data: { email: email, password: password },
-        }).then( res => {
+        }).then( async res => {
             localStorage.setItem('auth', JSON.stringify({value:res.data,expiry:new Date().getTime()+(60*1000+30)}));
-            setLogin(auth());
+            await setLogin(auth());
             console.log(login);
                 console.log(login.email);
                 fetchFavourites(login.email);
