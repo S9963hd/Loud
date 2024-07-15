@@ -8,7 +8,7 @@ import { songContext } from '../App';
 
 export async function auth() {
     const userCookie = localStorage.getItem('auth');
-    if (userCookie) {
+    if (userCookie!=null) {
         try {
             const user = JSON.parse(userCookie);
             console.log("Cookie Gotcha :)", user);
