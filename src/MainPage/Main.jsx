@@ -26,7 +26,7 @@ function Navigation({shownav,setShowNav}){
                 <img src="logo.png" alt="Logo" className="logo"/>
                 <i className="fa-solid fa-magnifying-glass icon"  onClick={()=>navigate('/search')}></i>
             </div>
-           {(login==null)?<button className="button" onClick={()=>navigate('/login')}>Login</button>:<button className="button" onClick={()=>{setLogin(null);setSongs([]);setFavourites(null);localStorage.removeItem('auth')}}>Logout</button>}
+           {(localStorage.getItem('auth')==null)?<button className="button" onClick={()=>navigate('/login')}>Login</button>:<button className="button" onClick={()=>{setLogin(null);setSongs([]);setFavourites(null);localStorage.removeItem('auth')}}>Logout</button>}
         </nav>
     )
 }
