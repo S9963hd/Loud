@@ -43,10 +43,9 @@ function App() {
       });
     }
   }
-  console.log(login);
   return (
     <div>
-      <songContext.Provider value={{ songs, setSongs, index, setIndex,playStack, setPlayStack,login,setLogin,favourites,setFavourites,songsFlag,setSongsFlag }}>
+      <songContext.Provider value={{ songs, setSongs, index, setIndex,playStack, setPlayStack,favourites,setFavourites,songsFlag,setSongsFlag }}>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/search" element={<Search />} />
