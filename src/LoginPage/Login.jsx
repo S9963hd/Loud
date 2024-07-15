@@ -6,28 +6,12 @@ import './Login.css';
 import axios from 'axios';
 import { songContext } from '../App';
 
-export async function auth() {
-    const userCookie = localStorage.getItem('auth');
-    if (userCookie!=null) {
-        try {
-            const user = JSON.parse(userCookie);
-            console.log("Cookie Gotcha :)", user);
-            return user.value;
-        } catch (e) {
-            console.error("Error parsing cookie:", e);
-            return null;
-        }
-    } else {
-        console.log('No user cookie found');
-        return null;
-    }
-}
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { login, setLogin, favourites, setFavourites } = useContext(songContext);
+    const {favourites, setFavourites } = useContext(songContext);
     const [loader, setLoader] = useState(false);
     const navigate = useNavigate();
 
@@ -79,7 +63,6 @@ const Login = () => {
             data: { email: email, password: password },
         }).then( res => {
             localStorage.setItem('auth', JSON.stringify({ value: res.data, expiry: new Date().getTime() + (60 * 1000 + 30) }));
-            setLogin(auth());
             if (login!=null) {
                 fetchFavourites(JSON.parse(localStorage.getItem('auth')).value.email);
             } else {
