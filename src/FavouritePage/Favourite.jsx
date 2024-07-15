@@ -9,6 +9,7 @@ const Favourite = () => {
 
   useEffect(() => {
     const fetchFavourites = async () => {
+      console.log(login);
         await axios({
           method:"POST",
           url:"https://loudbackendfavourites.onrender.com/getfavourites",
