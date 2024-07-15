@@ -6,7 +6,7 @@ import { songContext } from '../App';
 import {auth} from '../LoginPage/Login';
 const Favourite = () => {
   const { favourites, setFavourites, setSongs,login } = useContext(songContext);
-
+// setInterval(()=>fetchFavourites(),2000)
   useEffect(() => {
     console.log(JSON.parse(localStorage.getItem('auth')).value.email);
     const fetchFavourites = async () => {
@@ -14,7 +14,7 @@ const Favourite = () => {
           method:"POST",
           url:"https://loudbackendfavourites.onrender.com/getfavourites",
           data:{email:JSON.parse(localStorage.getItem('auth')).value.email}
-        }).then(res=>{console.log(favourites);setFavourites(res.data)}).catch(err=>{console.log(err,"Server Error");setInterval(()=>fetchFavourites(),2000)})
+        }).then(res=>{console.log(favourites);setFavourites(res.data)}).catch(err=>{console.log(err,"Server Error")})
         console.log("Favourites fetched successfully", favourites)
     };
   }, [favourites]);
