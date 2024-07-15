@@ -20,7 +20,7 @@ const Favourite = () => {
 
   return (
     <div className="favContent">
-      {console.log(login)}
+      <h1>{login}</h1>
       <h1 className="favTitle">Favourite Songs</h1>
       {favourites.length > 0 ? (
         favourites.map((e) => (
