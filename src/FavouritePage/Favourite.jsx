@@ -13,7 +13,7 @@ const Favourite = () => {
         await axios({
           method:"POST",
           url:"https://loudbackendfavourites.onrender.com/getfavourites",
-          data:{email:JSON.parse(localStorage.getItem('auth')).value.email}
+          data:{email:login.email}
         }).then(res=>{console.log(favourites);setFavourites(res.data)}).catch(err=>{console.log(err,"Server Error")})
         console.log("Favourites fetched successfully", favourites)
     };
@@ -22,7 +22,7 @@ const Favourite = () => {
 
   return (
     <div className="favContent">
-{/*       <h1>{login.email}</h1> */}
+      <h1>{login.email}</h1>
       <h1 className="favTitle">Favourite Songs</h1>
       {(favourites.length > 0 && favourites!=null) ? (
         favourites.map((e) => (
