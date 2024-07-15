@@ -5,14 +5,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Login.css';
 import axios from 'axios';
 import { songContext } from '../App';
-// import Cookie from 'js-cookie';
 
 export async function auth() {
     const userCookie = localStorage.getItem('auth');
     if (userCookie) {
         try {
             const user = JSON.parse(userCookie);
-            console.log("Cookie Gotcha :)",user);
+            console.log("Cookie Gotcha :)", user);
             return user.value;
         } catch (e) {
             console.error("Error parsing cookie:", e);
@@ -32,7 +31,7 @@ const Login = () => {
     const [loader, setLoader] = useState(false);
     const navigate = useNavigate();
 
-    async  function notify(status) {
+    async function notify(status) {
         if (status === 200) {
             await setTimeout(() => toast.success("Logged in Successfully"), 100);
             navigate('/');
@@ -45,12 +44,10 @@ const Login = () => {
         } else if (status === 301) {
             toast.warning("Please Wait.......", { autoClose: false });
             setLoader(false);
-        }
-        else if(status==302){
+        } else if (status === 302) {
             toast.warning("Technical Error at frontend please try again");
             setLoader(false);
-        }
-        else {
+        } else {
             toast.error("Server Error");
             setLoader(false);
         }
@@ -60,8 +57,18 @@ const Login = () => {
         await axios({
             method: "POST",
             url: "https://loudbackendfavourites.onrender.com/getfavourites",
-            data: {email:data}
-        }).then(res => { setFavourites(res.data); console.log(res.data); notify(200) }).catch(err => { (err.response != undefined) ? notify(505) : notify(err.response.status) });
+            data: { email: data }
+        }).then(res => {
+            setFavourites(res.data);
+            console.log(res.data);
+            notify(200);
+        }).catch(err => {
+            if (err.response !== undefined) {
+                notify(err.response.status);
+            } else {
+                notify(505);
+            }
+        });
         setLoader(false);
     }
 
@@ -70,14 +77,22 @@ const Login = () => {
             method: "POST",
             url: "https://loudbackendlogin.onrender.com/login",
             data: { email: email, password: password },
-        }).then( async res => {
-            localStorage.setItem('auth', JSON.stringify({value:res.data,expiry:new Date().getTime()+(60*1000+30)}));
-            await setLogin(auth());
-            console.log(login);
-                console.log(login.email);
-                fetchFavourites(login.email);
-                 notify(302);
-        }).catch(err => { (err.response === undefined) ? notify(505) : notify(err.response.status) });
+        }).then(async res => {
+            localStorage.setItem('auth', JSON.stringify({ value: res.data, expiry: new Date().getTime() + (60 * 1000 + 30) }));
+            const user = await auth();
+            await setLogin(user);
+            if (user) {
+                fetchFavourites(user.email);
+            } else {
+                notify(302);
+            }
+        }).catch(err => {
+            if (err.response === undefined) {
+                notify(505);
+            } else {
+                notify(err.response.status);
+            }
+        });
     }
 
     async function forgotPassword() {
@@ -85,7 +100,15 @@ const Login = () => {
             method: "POST",
             url: "https://loudbackendlogin.onrender.com/forgot",
             data: { email: email }
-        }).then(res => { notify(res.status) }).catch(err => { (err.response.status !== undefined) ? notify(err.response.status) : notify(500) });
+        }).then(res => {
+            notify(res.status);
+        }).catch(err => {
+            if (err.response !== undefined) {
+                notify(err.response.status);
+            } else {
+                notify(500);
+            }
+        });
     }
 
     return (
@@ -98,14 +121,14 @@ const Login = () => {
                 </div>
                 <div>
                     <h2>Enter Password</h2>
-                    <input type={(showPassword) ? "password" : "text"} value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    <input type={showPassword ? "password" : "text"} value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <div>
-                    <p onClick={() => setShowPassword(!showPassword)} style={{ cursor: 'pointer' }}>ShowPassword</p>
-                    <p style={{ cursor: 'pointer' }} onClick={() => forgotPassword()}>forgot Password?</p>
+                    <p onClick={() => setShowPassword(!showPassword)} style={{ cursor: 'pointer' }}>Show Password</p>
+                    <p style={{ cursor: 'pointer' }} onClick={forgotPassword}>Forgot Password?</p>
                 </div>
                 <div>
-                    <button type="submit" className="button" onClick={() => setLoader(true)}>Login&nbsp;<i className={(loader) ? "fa-solid fa-spinner loader" : "hide"}></i></button>
+                    <button type="submit" className="button" onClick={() => setLoader(true)}>Login&nbsp;<i className={loader ? "fa-solid fa-spinner loader" : "hide"}></i></button>
                     <button type="button" onClick={() => navigate('/signup')} className="button">SignUp</button>
                 </div>
                 <ToastContainer />
