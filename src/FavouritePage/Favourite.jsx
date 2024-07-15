@@ -3,7 +3,6 @@ import { Card } from '../SearchPage/Search';
 import './Favourite.css';
 import axios from 'axios'; 
 import { songContext } from '../App';
-import {auth} from '../LoginPage/Login';
 const Favourite = () => {
   const { favourites, setFavourites, setSongs } = useContext(songContext);
 // setInterval(()=>fetchFavourites(),2000)
