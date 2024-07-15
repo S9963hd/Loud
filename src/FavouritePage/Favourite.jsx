@@ -13,7 +13,7 @@ const Favourite = () => {
           method:"POST",
           url:"https://loudbackendfavourites.onrender.com/getfavourites",
           data:login
-        }).then(res=>setFavourites(res.data)).catch(err=>console.log("Server Error"))
+        }).then(res=>setFavourites(res.data)).catch(err=>{console.log("Server Error");fetctFavourites()})
         console.log("Favourites fetched successfully", response.data)
     };
   }, [setFavourites]);
