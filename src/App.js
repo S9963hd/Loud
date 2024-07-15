@@ -21,7 +21,7 @@ function App() {
   const [songs, setSongs] = useState([]);
   const [index, setIndex] = useState(null);
   const [playStack, setPlayStack] = useState({});
-  const [login,setLogin]=useState(auth());
+  const [login,setLogin]=useState(JSON.parse(localStorage.getItem('myObject')));
   const[favourites,setFavourites]=useState([]);
   const[songsFlag,setSongsFlag]=useState([]);
   // next Song
