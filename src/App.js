@@ -14,14 +14,23 @@ import Login from './LoginPage/Login';
 import SignUp from './LoginPage/SignUp';
 // Song Context
 export const songContext = createContext();
-
+export function auth(){
+  let data=localStorage.getItem('auth');
+  if(data){
+    return JSON.parse(data).value;
+  }
+  else{
+    return null;
+  }
+}
 function App() {
   // songs
   const [songs, setSongs] = useState([]);
   const [index, setIndex] = useState(null);
   const [playStack, setPlayStack] = useState({});
-  const[favourites,setFavourites]=useState([]);
-  const[songsFlag,setSongsFlag]=useState([]);
+  const [favourites,setFavourites]=useState([]);
+  const [songsFlag,setSongsFlag]=useState([]);
+  const [login,setLogin]=useState(auth());
   // next Song
   async function next() {
     if (index < songs.length - 1) {
@@ -45,13 +54,13 @@ function App() {
   }
   return (
     <div>
-      <songContext.Provider value={{ songs, setSongs, index, setIndex,playStack, setPlayStack,favourites,setFavourites,songsFlag,setSongsFlag }}>
+      <songContext.Provider value={{ songs, setSongs,login,setLogin, index, setIndex,playStack, setPlayStack,favourites,setFavourites,songsFlag,setSongsFlag }}>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/search" element={<Search />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/favourite" element={(localStorage.getItem('auth'))?<Favourite />:<Model />}/>
+          <Route path="/favourite" element={(login)?<Favourite />:<Model />}/>
         </Routes>
       </songContext.Provider>
       {songs.length > 0 && (

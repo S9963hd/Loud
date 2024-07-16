@@ -9,7 +9,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const {favourites, setFavourites } = useContext(songContext);
+    const {favourites, setFavourites,setLogin,login } = useContext(songContext);
     const [loader, setLoader] = useState(false);
     const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const Login = () => {
             toast.warning("Technical Error at frontend please try again");
             setLoader(false);
         } else {
-            toast.error("Server Error");
+            toast.error("Server Error/TimeOut");
             setLoader(false);
         }
     }
@@ -39,7 +39,8 @@ const Login = () => {
         await axios({
             method: "POST",
             url: "https://loudbackendfavourites.onrender.com/getfavourites",
-            data: { email: data }
+            data: { email: data },
+            timeout:9000
         }).then(res => {
             setFavourites(res.data);
             console.log(res.data);
@@ -62,7 +63,8 @@ const Login = () => {
         }).then( res => {
             localStorage.setItem('auth', JSON.stringify({ value: res.data, expiry: new Date().getTime() + (60 * 1000 + 30) }));
             if (localStorage.getItem('auth')!=null) {
-                fetchFavourites(JSON.parse(localStorage.getItem('auth')).value.email);
+                setLogin(JSON.parse(localStorage.getItem('auth')).value);
+                fetchFavourites(login.email);
             } else {
                 notify(302);
             }
