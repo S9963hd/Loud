@@ -59,8 +59,7 @@ const Login = () => {
         await axios({
             method: "POST",
             url: "https://loudbackendlogin.onrender.com/login",
-            data: { email: email, password: password },
-            timeout:9000
+            data: { email: email, password: password }
         }).then( res => {
             localStorage.setItem('auth', JSON.stringify({ value: res.data, expiry: new Date().getTime() + (60 * 1000 + 30) }));
             if (localStorage.getItem('auth')!=null) {
