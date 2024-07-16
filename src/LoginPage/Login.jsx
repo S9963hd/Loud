@@ -64,7 +64,7 @@ const Login = () => {
             localStorage.setItem('auth', JSON.stringify({ value: res.data, expiry: new Date().getTime() + (60 * 1000 + 30) }));
             if (localStorage.getItem('auth')!=null) {
                 setLogin(JSON.parse(localStorage.getItem('auth')).value);
-                fetchFavourites(login.email);
+                notify(200);
             } else {
                 notify(302);
             }
