@@ -29,7 +29,7 @@ const Search = () => {
             toast.warning("Please Login First",{autoClose:1000});
           }
           else{
-              toast.error("Server Error try again after 1 min",{autoClose:1000});
+              toast.error("Server Error try again after 1 min/Initial",{autoClose:1000});
               setLoading(false);
           }
         

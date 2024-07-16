@@ -30,7 +30,7 @@ const Login = () => {
             toast.warning("Technical Error at frontend please try again");
             setLoader(false);
         } else {
-            toast.error("Server Error/TimeOut");
+            toast.error("Server Error/TimeOut/Initial");
             setLoader(false);
         }
     }
