@@ -30,7 +30,7 @@ const Login = () => {
             toast.warning("Technical Error at frontend please try again");
             setLoader(false);
         } else {
-            toast.error("Server Error/TimeOut/Initial");
+            toast.error("Server Error/TimeOut/Initializing Please wait 1 min..");
             setLoader(false);
         }
     }
@@ -60,6 +60,7 @@ const Login = () => {
             method: "POST",
             url: "https://loudbackendlogin.onrender.com/login",
             data: { email: email, password: password },
+            timeout:9000
         }).then( res => {
             localStorage.setItem('auth', JSON.stringify({ value: res.data, expiry: new Date().getTime() + (60 * 1000 + 30) }));
             if (localStorage.getItem('auth')!=null) {
